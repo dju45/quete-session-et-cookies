@@ -6,6 +6,11 @@ if (isset($_POST['loginname'])) {
     setcookie('pseudo', $_SESSION['client'], time() + 365*24*3600);
     header('Location: index.php');
     exit();
+}
+if(isset($_COOKIE['pseudo'])) {
+    header('Location: index.php');
+    exit();
+
 
 }
 

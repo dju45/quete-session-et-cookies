@@ -6,6 +6,6 @@
  * Time: 15:01
  */
 session_start();
+setcookie('pseudo','', time() -3600);
 session_destroy();
 header('Location: login.php');
-exit;

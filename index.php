@@ -1,19 +1,17 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['client'])) {
-    header('Location: login.php');
-    exit();
-}
 if (!isset($_SESSION['cart'])) {
     $_SESSION ['cart']= array();
 }
-if (isset($_POST['addtocart'])) {
-    $articleid = $_POST['addtocart'];
-    $_SESSION['cart'][]= $articleid;
+if (isset($_COOKIE['pseudo'])) {
+    if (isset($_POST['addtocart'])) {
+        $articleid = $_POST['addtocart'];
+        $_SESSION['cart'][]= $articleid;
+    }
 }
-require 'inc/head.php';
 
+require 'inc/head.php';
 ?>
 
 <section class="cookies container-fluid">
