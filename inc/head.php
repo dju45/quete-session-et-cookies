@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +24,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/" >
+        <a class="navbar-brand" href="/"  >
           <img class="pull-left" src="assets/img/cookie_funny_clipart.png" alt="The Cookies Factory logo">
           <h1>The Cookies Factory</h1>
         </a>
@@ -44,16 +43,20 @@
                 </a>
             </li>
             <li>
-                <a href="logout.php" class="btn btn-warning navbar-btn">
-                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                    Log out
-                </a>
+                <?php if(isset($_COOKIE['pseudo'])) : ?>
+                <?='<a href="logout.php" class="btn btn-warning navbar-btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>Log out</a>'?>
+                <?php endif; ?>
+            </li>
+            <li>
+                <?php if(!isset($_COOKIE['pseudo'])) : ?>
+                    <?='<a href="login.php" class="btn btn-warning navbar-btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>Login</a>'?>
+                <?php endif; ?>
             </li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
   <div class="container-fluid text-right">
-    <strong>Hello  <?=$_COOKIE['pseudo']?>  !</strong>
+    <strong>Hello  <?php if(!empty($_SESSION['client'])) : echo $_COOKIE['pseudo']; endif ?>  !</strong>
   </div>
 </header>
